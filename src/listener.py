@@ -107,9 +107,10 @@ class Slots(object):
         self.ui.cmb_subs.addItems(sub_list)
         
     def addToQueue(self):
-        string = queue.convertToString(self.ui)
-        self.screen.queue.addItem(string)
-        self.screen.queue.listJobs()
+        string = queue.convertToString(self.screen)
+        if string is not None:
+            self.screen.queue.addItem(string)
+            self.screen.queue.listJobs()
         
     def extractFrames(self):
         jobdict = queue.convertToString(self.ui)
