@@ -24,8 +24,8 @@ class FFmpeg(object):
         return data
             
     def extractFrames(self, job):
-        #os.mkdir(job['desc'])
-        os.chdir("C:/Google_Drive/coding_projects/PyCharm/GifExtractor")
+        if not os.path.exists('imgs/' + job['desc']):
+            os.mkdir('imgs/' + job['desc'])
         subargs = [
             " -ss %s" % job["time_start"],
             " -i %s" % job["srcfile"],

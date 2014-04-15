@@ -74,10 +74,10 @@ class Slots(object):
         self.screen.config.saveConfig()
         
     def loadExternalSubs(self):
-        dir = "C:/"
-        filter = "Subtitles (*.srt *.ass *.sub)"
+        startdir = "C:/"
+        typefilter = "Subtitles (*.srt *.ass *.sub)"
         dest = self.ui.cmb_subs
-        self.openDialog(dir, filter, dest, False)
+        self.openDialog(startdir, typefilter, dest, False)
         
     def scanVideo(self):
         video = self.ui.line_videoin.text()
@@ -100,7 +100,7 @@ class Slots(object):
             index = subs[x][0]
             name = subs[x][1]
             lang = subs[x][2]
-            string = "%s: %s (%s)" % (index,name,lang.upper())
+            string = "%s: %s (%s)" % (index, name, lang.upper())
             sub_list.append(string)
             
         self.ui.cmb_subs.clear()
@@ -112,8 +112,8 @@ class Slots(object):
         self.screen.queue.listJobs()
         
     def extractFrames(self):
-        dict = queue.convertToString(self.ui)
-        self.screen.ffmpeg.extractFrames(dict)
+        jobdict = queue.convertToString(self.ui)
+        self.screen.ffmpeg.extractFrames(jobdict)
         
     #Secondary functions. Not to be called by signals.
     def openDialog(self, startdir, typefilter, dest, dirmode=False):
