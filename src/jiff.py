@@ -2,6 +2,7 @@ import subprocess
 import os
 
 
+#Outdated file, kept for reference only.
 def extractFrames():
     ffmpeg = "C:/Google_Drive/coding_projects/libraries/" \
              "ffmpeg-20140102/bin/ffmpeg.exe"
