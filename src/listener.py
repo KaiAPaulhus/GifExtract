@@ -51,17 +51,17 @@ class Slots(object):
             val = curr[curr.find(' (')+2:curr.find('FPS)')-1]
             self.ui.line_fps.setText(val)
         
-    def locateVideo(self, checked):
-        dir = "C:/"
-        filter = "Videos (*.avi *.mp4 *.mkv *.mov *.wmv *.divx *.vidx)"
+    def locateVideo(self):
+        startdir = "C:/test"
+        typefilter = "Videos (*.avi *.mp4 *.mkv *.mov *.wmv *.divx *.vidx)"
         dest = self.ui.line_videoin
-        self.openDialog(dir, filter, dest, False)
+        self.openDialog(startdir, typefilter, dest, False)
         
-    def locateExtractor(self, checked):
-        dir = "C:/"
-        filter = None
+    def locateExtractor(self):
+        startdir = "C:/"
+        typefilter = None
         dest = self.ui.line_ffmpeg
-        self.openDialog(dir, filter, dest, True)
+        self.openDialog(startdir, typefilter, dest, True)
         
     def saveFFmpegLocation(self):
         newval = self.ui.line_ffmpeg.text()
@@ -81,6 +81,7 @@ class Slots(object):
         
     def scanVideo(self):
         video = self.ui.line_videoin.text()
+        print(video)
         info = self.screen.ffmpeg.getVideoInfo(video)
         subs = info.getSubtitleList()
         fps = info.getFramesPerSecond()
@@ -122,25 +123,23 @@ class Slots(object):
         browser.show()
 
     def fileSelected(self, field, file):
-        # kids = self.screen.children()
-        # cw = None
-        # for x in range(0,len(kids)):
-            # if kids[x].objectName() == "centralwidget":
-                # cw = kids[x].children()
-        # if cw != None:
-            # for x in range(0,len(cw)):
-                # if type(cw[x]) == type(QtWidgets.QTabWidget()):
-                    # print(cw[x].children())
-                
-    
-        # if type(field) == type(QtWidgets.QLineEdit()):
-            # field.setText(file)
-        # elif type(field) == type(QtWidgets.QComboBox()):
-            # field.insertItem(0,file)
-            # field.setCurrentIndex(0)
-        # else:
-            # print(type(field))
-        pass
+        kids = self.screen.children()
+        cw = None
+        for x in range(0, len(kids)):
+            if kids[x].objectName() == "centralwidget":
+                cw = kids[x].children()
+        if cw is not None:
+            for x in range(0, len(cw)):
+                if isinstance(cw[x], QtWidgets.QTabWidget):
+                    print(cw[x].children())
+
+        if isinstance(field, QtWidgets.QLineEdit):
+            field.setText(file)
+        elif isinstance(field, QtWidgets.QComboBox):
+            field.insertItem(0, file)
+            field.setCurrentIndex(0)
+        else:
+            print(type(field))
 
     def getFpsValues(self, fps):
         isrounded = self.screen.config.getKey('roundfps')

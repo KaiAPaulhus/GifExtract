@@ -11,7 +11,7 @@ class FFmpeg(object):
 
     def getVideoInfo(self, file):
         subargs = [
-            "-v quiet",
+            " -v quiet",
             " -print_format json",
             " -show_format",
             " -show_streams",

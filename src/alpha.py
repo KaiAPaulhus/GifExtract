@@ -1,7 +1,10 @@
 from ui_screen import Ui_wnd_pyjiff
-from PyQt5 import QtWidgets,QtCore
+from PyQt5 import QtWidgets
 import sys
-import listener, config, ffmpeg, test, queue
+import listener
+import config
+import ffmpeg
+import queue
 
 
 class Screen(QtWidgets.QMainWindow):
