@@ -45,6 +45,10 @@ class Screen(QtWidgets.QMainWindow):
         self.ui.btn_extract_exe.clicked.connect(self.slots.extractFrames)
         self.ui.btn_queue_exe.clicked.connect(self.slots.executeQueueItem)
         self.ui.btn_queue_exeall.clicked.connect(self.slots.executeAllQueue)
+
+        self.ui.btn_refreshjobs.clicked.connect(self.slots.refreshJobList)
+        self.ui.check_resize.stateChanged.connect(
+            self.slots.resizeCheckboxStateChanged)
         
     def openOptions(self):
         options = config.ConfigMenu(self, self.config)

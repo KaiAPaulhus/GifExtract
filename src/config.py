@@ -67,8 +67,8 @@ class Config(object):
         else:
             self.performSave()
             
-    def performSave(self, newloc=False):
-        if not newloc:
+    def performSave(self, newloc=None):
+        if newloc is None:
             loc = self.fileloc
         else:
             loc = newloc
@@ -95,7 +95,7 @@ class ConfigMenu(QtWidgets.QMainWindow):
         self.fillElements()
     
     #This exists only to save typing and space in the fillElements function
-    def get(self,key):
+    def get(self, key):
         return self.config.getKey(key)
 
     def fillElements(self):

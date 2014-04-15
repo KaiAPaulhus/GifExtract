@@ -1,6 +1,14 @@
 {
-    "autoanalyze": true, 
-    "roundfps": true, 
-    "imagemagick": "Please select ImageMagick's 'Bin' folder.", 
-    "ffmpeg": "ffmpeg/bin"
+  "autoanalyze": true,
+  "roundfps": true,
+  "imagemagick": "Please select ImageMagick's 'Bin' folder.",
+  "ffmpeg": "ffmpeg/bin",
+  "savedgifsettings": {
+    "tumblrsize": {
+      "width": 400,
+      "height": 200,
+      "loop": false,
+      "delay": 12
+    }
+  }
 }

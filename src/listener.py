@@ -1,6 +1,6 @@
 import queue
-import interface
 import interface_video
+import interface_giffer
 
 
 #Contains functions that will be used by widgets.        
@@ -9,6 +9,16 @@ class Slots(object):
     def __init__(self, screen):
         self.ui = screen.ui
         self.screen = screen
+
+    #Interfaces for the gif making screen
+    def createAnimatedImage(self):
+        interface_giffer.createAnimatedImage(self.screen)
+
+    def refreshJobList(self):
+        interface_giffer.populateJobList(self.screen)
+
+    def resizeCheckboxStateChanged(self, state=False):
+        interface_giffer.resizeCheckboxStateChanged(self.screen)
 
     #Interfaces from the options screen.
     def saveFFmpegLocation(self):
