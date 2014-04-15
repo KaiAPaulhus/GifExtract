@@ -24,11 +24,21 @@ class JobQueue(object):
             self.jobs = []
             
     def addItem(self, job):
-        self.jobs.append(job)
+        if self.checkUnique(job["desc"]):
+            self.jobs.append(job)
+            return True
+        else:
+            return False
         
     def removeItem(self, index):
         self.jobs[index].remove()
-        
+
+    def checkUnique(self, key):
+        for job in self.jobs:
+            if job["desc"] == key:
+                return False
+        return True
+
     def listJobs(self):
         self.ui.tree_queue.clear()
         for job in self.jobs:
@@ -49,6 +59,9 @@ class JobQueue(object):
             if job["desc"] == desc:
                 print(type(job))
                 return job
+
+    def getJobs(self):
+        return self.jobs
 
 
 def addToQueue(queue, job):

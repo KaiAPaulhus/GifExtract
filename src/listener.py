@@ -109,7 +109,10 @@ class Slots(object):
     def addToQueue(self):
         string = queue.convertToString(self.screen)
         if string is not None:
-            self.screen.queue.addItem(string)
+            result = self.screen.queue.addItem(string)
+            if not result:
+                #TODO: Properly handle error.
+                print("Error adding to queue. Non-unique description")
             self.screen.queue.listJobs()
         
     def extractFrames(self):
@@ -123,7 +126,11 @@ class Slots(object):
             job = self.screen.queue.getJobByDescription(text)
             if job is not None:
                 self.screen.ffmpeg.extractFrames(job)
-        
+
+    def executeAllQueue(self):
+        for item in self.screen.queue.getJobs():
+            self.screen.ffmpeg.extractFrames(item)
+
     #Secondary functions. Not to be called by signals.
     def openDialog(self, startdir, typefilter, dest, dirmode=False):
         browser = FileDialog(self.screen, dest, self, dirmode, self.screen)
