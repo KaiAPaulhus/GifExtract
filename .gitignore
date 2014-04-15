@@ -1,0 +1,10 @@
+ffmpeg/
+imagemagick/
+.idea/
+imgs/
+Compile Options.bat
+Compile Screen.bat
+Run.bat
+todo.txt
+video_info.json
+src/__pycache__/
