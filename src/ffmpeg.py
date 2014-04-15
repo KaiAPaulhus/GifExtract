@@ -24,6 +24,8 @@ class FFmpeg(object):
         return data
             
     def extractFrames(self, job):
+        if not os.path.exists("imgs/"):
+            os.mkdir("imgs/")
         if not os.path.exists('imgs/' + job['desc']):
             os.mkdir('imgs/' + job['desc'])
         subargs = [

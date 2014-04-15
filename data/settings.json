@@ -1,0 +1,6 @@
+{
+    "autoanalyze": true, 
+    "roundfps": true, 
+    "imagemagick": "Please select ImageMagick's 'Bin' folder.", 
+    "ffmpeg": "ffmpeg/bin"
+}
