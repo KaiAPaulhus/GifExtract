@@ -6,7 +6,7 @@ import listener, config, ffmpeg, test, queue
 
 class Screen(QtWidgets.QMainWindow):
   
-    def __init__(self, parent=None, isTestMode=False):
+    def __init__(self, parent=None):
         def setupFFMpeg():
             fileloc = self.config.getKey("ffmpeg")
             self.ffmpeg = ffmpeg.FFmpeg(fileloc)
@@ -28,10 +28,6 @@ class Screen(QtWidgets.QMainWindow):
         setupConfig()
         setupFFMpeg()
         setupQueue()
-        
-        if isTestMode:
-            self.tester = test.Tester(self)
-            self.tester.runTests()
 
     def createLinks(self):
         self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)
@@ -50,8 +46,7 @@ class Screen(QtWidgets.QMainWindow):
         options.show()
 
 if __name__ == "__main__":
-    testmode = True
     app = QtWidgets.QApplication(sys.argv)
-    program = Screen(isTestMode=testmode)
+    program = Screen()
     program.show()
     sys.exit(app.exec_())
