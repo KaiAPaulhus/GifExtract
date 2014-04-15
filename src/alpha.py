@@ -43,6 +43,7 @@ class Screen(QtWidgets.QMainWindow):
         self.ui.actionPreferences.triggered.connect(self.openOptions)
         self.ui.btn_extract_queue.clicked.connect(self.slots.addToQueue)
         self.ui.btn_extract_exe.clicked.connect(self.slots.extractFrames)
+        self.ui.btn_queue_exe.clicked.connect(self.slots.executeQueueItem)
         
     def openOptions(self):
         options = config.ConfigMenu(self, self.config)

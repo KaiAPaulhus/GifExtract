@@ -115,6 +115,14 @@ class Slots(object):
     def extractFrames(self):
         jobdict = queue.convertToString(self.ui)
         self.screen.ffmpeg.extractFrames(jobdict)
+
+    def executeQueueItem(self):
+        curritem = self.ui.tree_queue.currentItem()
+        if curritem is not None:
+            text = curritem.text(1)
+            job = self.screen.queue.getJobByDescription(text)
+            if job is not None:
+                self.screen.ffmpeg.extractFrames(job)
         
     #Secondary functions. Not to be called by signals.
     def openDialog(self, startdir, typefilter, dest, dirmode=False):

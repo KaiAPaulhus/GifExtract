@@ -42,8 +42,15 @@ class JobQueue(object):
                                                      job['fps']])
             sub04 = QtWidgets.QTreeWidgetItem(root, ["Subtitles",
                                               job["subs"]])
-            
-    
+
+    def getJobByDescription(self, desc):
+        for job in self.jobs:
+            print(job["desc"], desc)
+            if job["desc"] == desc:
+                print(type(job))
+                return job
+
+
 def addToQueue(queue, job):
     queue.addItem(job)
 
@@ -56,7 +63,7 @@ def convertToString(screen):
     if isDuration:
         duration = screen.ui.time_end.text()
     else:
-        #Duration = End - Start
+        #TODO:Calculate duration
         duration = "00:00:01"
         
     subs = screen.ui.cmb_subs.currentText()
