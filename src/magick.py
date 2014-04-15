@@ -4,6 +4,7 @@ import os
 
 def toGif(folder=None, resize=True, animate=True):
 
+    #TODO: Get location from config
     magic = "ImageMagick/animate.exe"
     imagedir = "imgs/" + folder
     outpath = "imgs/out"

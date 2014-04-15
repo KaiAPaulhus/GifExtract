@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\addtoqueue.ui'
 #
-# Created: Tue Apr 15 21:05:23 2014
+# Created: Tue Apr 15 22:27:16 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,5 +43,5 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Please enter a short description for this scene."))
+        self.label.setText(_translate("Dialog", "Please enter a short, unique description for this scene."))
 

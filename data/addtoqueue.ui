@@ -35,7 +35,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Please enter a short description for this scene.</string>
+      <string>Please enter a short, unique description for this scene.</string>
      </property>
     </widget>
    </item>
