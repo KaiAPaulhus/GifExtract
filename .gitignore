@@ -8,3 +8,5 @@ Run.bat
 todo.txt
 video_info.json
 src/__pycache__/
+archaic/
+.gitignore
