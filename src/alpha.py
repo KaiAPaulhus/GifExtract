@@ -49,6 +49,7 @@ class Screen(QtWidgets.QMainWindow):
         self.ui.btn_refreshjobs.clicked.connect(self.slots.refreshJobList)
         self.ui.check_resize.stateChanged.connect(
             self.slots.resizeCheckboxStateChanged)
+        self.ui.btn_creategif.clicked.connect(self.slots.createAnimatedImage)
         
     def openOptions(self):
         options = config.ConfigMenu(self, self.config)

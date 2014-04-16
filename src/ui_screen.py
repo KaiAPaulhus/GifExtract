@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\screen.ui'
 #
-# Created: Wed Apr 16 00:11:37 2014
+# Created: Wed Apr 16 13:24:02 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -250,6 +250,11 @@ class Ui_wnd_pyjiff(object):
         self.btn_savegifsettings.setObjectName("btn_savegifsettings")
         self.horizontalLayout_16.addWidget(self.btn_savegifsettings)
         self.verticalLayout_5.addLayout(self.horizontalLayout_16)
+        self.progress_gif = QtWidgets.QProgressBar(self.tab_gif)
+        self.progress_gif.setProperty("value", 0)
+        self.progress_gif.setTextVisible(False)
+        self.progress_gif.setObjectName("progress_gif")
+        self.verticalLayout_5.addWidget(self.progress_gif)
         spacerItem4 = QtWidgets.QSpacerItem(20, 91, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem4)
         self.tabWidget.addTab(self.tab_gif, "")

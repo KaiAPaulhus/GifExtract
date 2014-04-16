@@ -92,15 +92,19 @@ def keepProportionsCheckboxStateChanged(screen):
 
 
 def createAnimatedImage(screen):
-    currjob = screen.ui.cmb_job.currentItem()
+    currjob = screen.ui.cmb_job.currentText()
     if currjob is not None:
-        job = currjob.text()
+        args = dict()
+        args['name'] = currjob
+        args['resize'] = screen.ui.check_resize.isChecked()
+        args['loop'] = screen.ui.check_gif_loop.isChecked()
+        args['width'] = screen.ui.line_resize_width.text()
+        args['height'] = screen.ui.line_resize_height.text()
+        args['delay'] = screen.ui.spin_delay.value()
+        screen.creator = magick.GifWorker(screen, args)
+        screen.creator.progress.connect(progressUpdate)
+        screen.creator.start()
 
-        resize = screen.ui.check_resize.isChecked()
 
-        if resize:
-
-            width = screen.ui.line_resize_width.text()
-            height = screen.ui.line_resize_height.text()
-
-            magick.toGif(job, [width, height], True)
+def progressUpdate(screen, value):
+    screen.ui.progress_gif.setValue(value)

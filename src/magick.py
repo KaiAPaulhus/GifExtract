@@ -1,37 +1,53 @@
+from PyQt5 import QtCore
 import subprocess
 import os
 
 
-def toGif(folder=None, resize=True, animate=True):
+class GifWorker(QtCore.QThread):
 
-    #TODO: Get location from config
-    magic = "ImageMagick/animate.exe"
-    imagedir = "imgs/" + folder
-    outpath = "imgs/out"
+    progress = QtCore.pyqtSignal(QtCore.QObject, int, name="progressmade")
 
-    if not os.path.exists(outpath):
-        os.makedirs(outpath)
+    def __init__(self, screen, args):
+        QtCore.QThread.__init__(self)
+        self.args = args
+        self.screen = screen
 
-    resizeargs = [
-        imagedir,
-        ' -resize 444x250',
-        ' togif/small/small_%03d.png'
-    ]
-    animateargs = [
-        outpath,
-        ' -set delay 1x12',
-        ' -loop 0',
-        ' -coalesce',
-        ' -layers optimize'
-        ' +set comment'
-        ' output.gif'
-    ]
-                        
-    if resize:
-        args = [magic, resizeargs]
+    def run(self):
+        args = self.args
+        #TODO: Get location from config
+        magick = "ImageMagick/convert.exe"
+        imagedir = "imgs/" + args['name'] + '/'
+        outpath = "imgs/out"
+
+        if not os.path.exists(outpath):
+            os.makedirs(outpath)
+
+        if not os.path.exists(imagedir + 'small/'):
+            os.makedirs(imagedir + 'small/')
+        smallout = imagedir + '/small/out%03d.png'
+        self.progress.emit(self.screen, 5)
+        resizeargs = [
+            imagedir + '*.png',
+            ' -resize %sx%s' % (args['width'], args['height']),
+            ' -monitor ',
+            smallout
+        ]
+        animateargs = [
+            imagedir + '*.png',
+            ' -set delay 1x%i' % int(args['delay']),
+            ' -loop %d' % int(args['loop']),
+            ' -coalesce',
+            ' -layers optimize',
+            ' -monitor',
+            ' +set comment',
+            ' imgs/out/%s.gif' % args['name']
+        ]
+
+        if args['resize']:
+            args = [magick, resizeargs]
+            output = subprocess.check_output(args)
+            print(output)
+            self.progress.emit(self.screen, 50)
+        args = [magick, animateargs]
         output = subprocess.check_output(args)
-        print(output)
-    if animate:
-        args = [magic, animateargs]
-        output = subprocess.check_output(args)
-        print(output)
+        self.progress.emit(self.screen, 100)
