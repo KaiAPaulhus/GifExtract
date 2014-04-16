@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\screen.ui'
 #
-# Created: Wed Apr 16 13:24:02 2014
+# Created: Wed Apr 16 14:37:56 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -250,11 +250,28 @@ class Ui_wnd_pyjiff(object):
         self.btn_savegifsettings.setObjectName("btn_savegifsettings")
         self.horizontalLayout_16.addWidget(self.btn_savegifsettings)
         self.verticalLayout_5.addLayout(self.horizontalLayout_16)
+        self.label_7 = QtWidgets.QLabel(self.tab_gif)
+        font = QtGui.QFont()
+        font.setItalic(True)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.verticalLayout_5.addWidget(self.label_7)
         self.progress_gif = QtWidgets.QProgressBar(self.tab_gif)
         self.progress_gif.setProperty("value", 0)
         self.progress_gif.setTextVisible(False)
         self.progress_gif.setObjectName("progress_gif")
         self.verticalLayout_5.addWidget(self.progress_gif)
+        self.lbl_gif_currtask = QtWidgets.QLabel(self.tab_gif)
+        font = QtGui.QFont()
+        font.setItalic(True)
+        self.lbl_gif_currtask.setFont(font)
+        self.lbl_gif_currtask.setObjectName("lbl_gif_currtask")
+        self.verticalLayout_5.addWidget(self.lbl_gif_currtask)
+        self.progress_gif_sub = QtWidgets.QProgressBar(self.tab_gif)
+        self.progress_gif_sub.setProperty("value", 0)
+        self.progress_gif_sub.setTextVisible(False)
+        self.progress_gif_sub.setObjectName("progress_gif_sub")
+        self.verticalLayout_5.addWidget(self.progress_gif_sub)
         spacerItem4 = QtWidgets.QSpacerItem(20, 91, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem4)
         self.tabWidget.addTab(self.tab_gif, "")
@@ -360,6 +377,8 @@ class Ui_wnd_pyjiff(object):
         self.check_gif_deletesource.setText(_translate("wnd_pyjiff", "Delete Source Images"))
         self.btn_creategif.setText(_translate("wnd_pyjiff", "Create Gif"))
         self.btn_savegifsettings.setText(_translate("wnd_pyjiff", "Save Settings"))
+        self.label_7.setText(_translate("wnd_pyjiff", "Overall Progress"))
+        self.lbl_gif_currtask.setText(_translate("wnd_pyjiff", "Task Progress"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_gif), _translate("wnd_pyjiff", "Create Gifs"))
         self.tree_queue.headerItem().setText(0, _translate("wnd_pyjiff", "Property"))
         self.tree_queue.headerItem().setText(1, _translate("wnd_pyjiff", "Value"))

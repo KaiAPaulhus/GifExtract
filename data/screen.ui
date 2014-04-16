@@ -497,7 +497,41 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_7">
+          <property name="font">
+           <font>
+            <italic>true</italic>
+           </font>
+          </property>
+          <property name="text">
+           <string>Overall Progress</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QProgressBar" name="progress_gif">
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_gif_currtask">
+          <property name="font">
+           <font>
+            <italic>true</italic>
+           </font>
+          </property>
+          <property name="text">
+           <string>Task Progress</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QProgressBar" name="progress_gif_sub">
           <property name="value">
            <number>0</number>
           </property>
