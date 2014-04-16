@@ -88,7 +88,8 @@ def populateJobList(screen):
 
     for entry in dirlist:
         if os.path.isdir("imgs/" + entry):
-            screen.ui.cmb_job.addItem(entry)
+            if entry != 'out':
+                screen.ui.cmb_job.addItem(entry)
 
 
 def populatePresetsList(screen):

@@ -6,7 +6,7 @@ import interface
 
 
 def extractFramesFromVideo(screen):
-    jobdict = queue.convertToString(screen.ui)
+    jobdict = queue.convertToString(screen)
     screen.ffmpeg.extractFrames(jobdict)
 
 

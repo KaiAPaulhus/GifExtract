@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 import json
 from ui_addtoqueue import Ui_Dialog
 
@@ -76,15 +76,18 @@ def convertToString(screen):
     if isDuration:
         duration = screen.ui.time_end.text()
     else:
-        #TODO:Calculate duration
-        duration = "00:00:01"
-        
+        sttime = screen.ui.time_start.time()
+        entime = screen.ui.time_end.time()
+        gap = sttime.msecsTo(entime)
+        holder = QtCore.QTime(0, 0, 0, 0)
+        holder = holder.addMSecs(gap)
+        duration = holder.toString('hh:mm:ss.zzz')
+
     subs = screen.ui.cmb_subs.currentText()
     fps = screen.ui.line_fps.text()
 
     popup = RequestDescription(screen)
     result = popup.exec()
-    print(result)
     if result is 1:
         description = popup.getDescription()
         pydict = {

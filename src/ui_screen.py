@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\screen.ui'
 #
-# Created: Wed Apr 16 15:14:38 2014
+# Created: Wed Apr 16 21:28:39 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -68,7 +68,7 @@ class Ui_wnd_pyjiff(object):
         self.time_start.setSizePolicy(sizePolicy)
         self.time_start.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(2000, 1, 1), QtCore.QTime(0, 5, 0)))
         self.time_start.setCurrentSection(QtWidgets.QDateTimeEdit.HourSection)
-        self.time_start.setDisplayFormat("hh:mm:ss")
+        self.time_start.setDisplayFormat("hh:mm:ss.zzz")
         self.time_start.setObjectName("time_start")
         self.horizontalLayout_4.addWidget(self.time_start)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -88,6 +88,7 @@ class Ui_wnd_pyjiff(object):
         self.time_end.setSizePolicy(sizePolicy)
         self.time_end.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(2000, 1, 1), QtCore.QTime(0, 0, 5)))
         self.time_end.setCurrentSection(QtWidgets.QDateTimeEdit.HourSection)
+        self.time_end.setTime(QtCore.QTime(0, 5, 5))
         self.time_end.setObjectName("time_end")
         self.horizontalLayout_5.addWidget(self.time_end)
         self.chk_vidprefdur = QtWidgets.QCheckBox(self.tab_video)
@@ -217,6 +218,7 @@ class Ui_wnd_pyjiff(object):
         self.label_10.setObjectName("label_10")
         self.horizontalLayout_14.addWidget(self.label_10)
         self.spin_delay = QtWidgets.QSpinBox(self.tab_gif)
+        self.spin_delay.setProperty("value", 24)
         self.spin_delay.setObjectName("spin_delay")
         self.horizontalLayout_14.addWidget(self.spin_delay)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -225,6 +227,7 @@ class Ui_wnd_pyjiff(object):
         self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
         self.check_gif_loop = QtWidgets.QCheckBox(self.tab_gif)
+        self.check_gif_loop.setChecked(True)
         self.check_gif_loop.setObjectName("check_gif_loop")
         self.horizontalLayout_17.addWidget(self.check_gif_loop)
         self.check_gif_deletesource = QtWidgets.QCheckBox(self.tab_gif)
@@ -314,7 +317,7 @@ class Ui_wnd_pyjiff(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(wnd_pyjiff)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(wnd_pyjiff)
         wnd_pyjiff.setTabOrder(self.tabWidget, self.line_ffmpeg)
         wnd_pyjiff.setTabOrder(self.line_ffmpeg, self.btn_ffmpegbrowse)
@@ -324,8 +327,28 @@ class Ui_wnd_pyjiff(object):
         wnd_pyjiff.setTabOrder(self.btn_browsevideofile, self.time_start)
         wnd_pyjiff.setTabOrder(self.time_start, self.time_end)
         wnd_pyjiff.setTabOrder(self.time_end, self.chk_vidprefdur)
-        wnd_pyjiff.setTabOrder(self.chk_vidprefdur, self.cmb_subs)
+        wnd_pyjiff.setTabOrder(self.chk_vidprefdur, self.btn_vidanalyze)
+        wnd_pyjiff.setTabOrder(self.btn_vidanalyze, self.cmb_subs)
         wnd_pyjiff.setTabOrder(self.cmb_subs, self.btn_loadsubs)
+        wnd_pyjiff.setTabOrder(self.btn_loadsubs, self.line_fps)
+        wnd_pyjiff.setTabOrder(self.line_fps, self.cmb_fps)
+        wnd_pyjiff.setTabOrder(self.cmb_fps, self.btn_extract_queue)
+        wnd_pyjiff.setTabOrder(self.btn_extract_queue, self.btn_extract_exe)
+        wnd_pyjiff.setTabOrder(self.btn_extract_exe, self.cmb_job)
+        wnd_pyjiff.setTabOrder(self.cmb_job, self.btn_refreshjobs)
+        wnd_pyjiff.setTabOrder(self.btn_refreshjobs, self.cmb_loadgifsettings)
+        wnd_pyjiff.setTabOrder(self.cmb_loadgifsettings, self.check_resize)
+        wnd_pyjiff.setTabOrder(self.check_resize, self.check_resize_keepratio)
+        wnd_pyjiff.setTabOrder(self.check_resize_keepratio, self.spin_delay)
+        wnd_pyjiff.setTabOrder(self.spin_delay, self.check_gif_loop)
+        wnd_pyjiff.setTabOrder(self.check_gif_loop, self.check_gif_deletesource)
+        wnd_pyjiff.setTabOrder(self.check_gif_deletesource, self.btn_creategif)
+        wnd_pyjiff.setTabOrder(self.btn_creategif, self.btn_savegifsettings)
+        wnd_pyjiff.setTabOrder(self.btn_savegifsettings, self.tree_queue)
+        wnd_pyjiff.setTabOrder(self.tree_queue, self.btn_queue_remove)
+        wnd_pyjiff.setTabOrder(self.btn_queue_remove, self.btn_queue_exe)
+        wnd_pyjiff.setTabOrder(self.btn_queue_exe, self.btn_queue_exeall)
+        wnd_pyjiff.setTabOrder(self.btn_queue_exeall, self.text_console)
 
     def retranslateUi(self, wnd_pyjiff):
         _translate = QtCore.QCoreApplication.translate
@@ -337,7 +360,7 @@ class Ui_wnd_pyjiff(object):
         self.btn_browsevideofile.setText(_translate("wnd_pyjiff", "Browse"))
         self.label_3.setText(_translate("wnd_pyjiff", "Start Time"))
         self.lbl_endtime.setText(_translate("wnd_pyjiff", "End Time"))
-        self.time_end.setDisplayFormat(_translate("wnd_pyjiff", "hh:mm:ss"))
+        self.time_end.setDisplayFormat(_translate("wnd_pyjiff", "hh:mm:ss.zzz"))
         self.chk_vidprefdur.setText(_translate("wnd_pyjiff", "Use Duration Instead Of Time"))
         self.btn_vidanalyze.setText(_translate("wnd_pyjiff", "Analyze Video"))
         self.label_5.setText(_translate("wnd_pyjiff", "Subtitles"))

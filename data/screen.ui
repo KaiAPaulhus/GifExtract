@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_video">
        <attribute name="title">
@@ -116,7 +116,7 @@
                <enum>QDateTimeEdit::HourSection</enum>
               </property>
               <property name="displayFormat">
-               <string notr="true">hh:mm:ss</string>
+               <string notr="true">hh:mm:ss.zzz</string>
               </property>
              </widget>
             </item>
@@ -172,7 +172,14 @@
                <enum>QDateTimeEdit::HourSection</enum>
               </property>
               <property name="displayFormat">
-               <string>hh:mm:ss</string>
+               <string>hh:mm:ss.zzz</string>
+              </property>
+              <property name="time">
+               <time>
+                <hour>0</hour>
+                <minute>5</minute>
+                <second>5</second>
+               </time>
               </property>
              </widget>
             </item>
@@ -423,7 +430,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spin_delay"/>
+           <widget class="QSpinBox" name="spin_delay">
+            <property name="value">
+             <number>24</number>
+            </property>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_3">
@@ -446,6 +457,9 @@
            <widget class="QCheckBox" name="check_gif_loop">
             <property name="text">
              <string>Loop</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -647,8 +661,28 @@
   <tabstop>time_start</tabstop>
   <tabstop>time_end</tabstop>
   <tabstop>chk_vidprefdur</tabstop>
+  <tabstop>btn_vidanalyze</tabstop>
   <tabstop>cmb_subs</tabstop>
   <tabstop>btn_loadsubs</tabstop>
+  <tabstop>line_fps</tabstop>
+  <tabstop>cmb_fps</tabstop>
+  <tabstop>btn_extract_queue</tabstop>
+  <tabstop>btn_extract_exe</tabstop>
+  <tabstop>cmb_job</tabstop>
+  <tabstop>btn_refreshjobs</tabstop>
+  <tabstop>cmb_loadgifsettings</tabstop>
+  <tabstop>check_resize</tabstop>
+  <tabstop>check_resize_keepratio</tabstop>
+  <tabstop>spin_delay</tabstop>
+  <tabstop>check_gif_loop</tabstop>
+  <tabstop>check_gif_deletesource</tabstop>
+  <tabstop>btn_creategif</tabstop>
+  <tabstop>btn_savegifsettings</tabstop>
+  <tabstop>tree_queue</tabstop>
+  <tabstop>btn_queue_remove</tabstop>
+  <tabstop>btn_queue_exe</tabstop>
+  <tabstop>btn_queue_exeall</tabstop>
+  <tabstop>text_console</tabstop>
  </tabstops>
  <resources/>
  <connections/>

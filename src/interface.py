@@ -44,7 +44,8 @@ def fileSelected(screen, field, file):
     if cw is not None:
         for x in range(0, len(cw)):
             if isinstance(cw[x], QtWidgets.QTabWidget):
-                print(cw[x].children())
+                #print(cw[x].children())
+                pass
 
     if isinstance(field, QtWidgets.QLineEdit):
         field.setText(file)
