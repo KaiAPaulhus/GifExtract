@@ -5,7 +5,7 @@ import listener
 import config
 import ffmpeg
 import queue
-
+import interface_giffer
 
 class Screen(QtWidgets.QMainWindow):
   
@@ -31,6 +31,7 @@ class Screen(QtWidgets.QMainWindow):
         setupConfig()
         setupFFMpeg()
         setupQueue()
+        interface_giffer.addCustomWidgets(self)
 
     def createLinks(self):
         self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)
@@ -50,6 +51,10 @@ class Screen(QtWidgets.QMainWindow):
         self.ui.check_resize.stateChanged.connect(
             self.slots.resizeCheckboxStateChanged)
         self.ui.btn_creategif.clicked.connect(self.slots.createAnimatedImage)
+        self.ui.cmb_job.currentIndexChanged.connect(
+            self.slots.jobSelectionChanged)
+        self.ui.check_resize_keepratio.stateChanged.connect(
+            self.slots.ratioCheckChanged)
         
     def openOptions(self):
         options = config.ConfigMenu(self, self.config)

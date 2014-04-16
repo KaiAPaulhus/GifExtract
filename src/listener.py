@@ -20,6 +20,12 @@ class Slots(object):
     def resizeCheckboxStateChanged(self, state=False):
         interface_giffer.resizeCheckboxStateChanged(self.screen)
 
+    def jobSelectionChanged(self):
+        interface_giffer.jobSelected(self.screen)
+
+    def ratioCheckChanged(self):
+        interface_giffer.keepProportionsCheckboxStateChanged(self.screen)
+
     #Interfaces from the options screen.
     def saveFFmpegLocation(self):
         newval = self.ui.line_ffmpeg.text()

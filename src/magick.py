@@ -1,7 +1,6 @@
 from PyQt5 import QtCore
 import subprocess
 import os
-import time
 import re
 
 
@@ -33,9 +32,15 @@ class GifWorker(QtCore.QThread):
             ' -monitor ',
             smallout
         ]
+
+        if args['resize']:
+            animatein = imagedir + 'small/*.png'
+        else:
+            animatein = imagedir + '*.png'
+
         animateargs = [
             ' -monitor ',
-            imagedir + '*.png',
+            animatein,
             ' -set delay 1x%i' % int(args['delay']),
             ' -loop %d' % int(args['loop']),
             ' -coalesce',
@@ -43,20 +48,27 @@ class GifWorker(QtCore.QThread):
             ' +set comment',
             ' imgs/out/%s.gif' % args['name']
         ]
-
-        if args['resize']:
-            args = [magick, resizeargs]
-            output = subprocess.check_output(args)
-            print(output)
-
-        # args = [magick, animateargs]
-        # output = subprocess.check_output(args)
-        # self.progress.emit(self.screen, 100)
-
         percentstr = re.compile(
             r'(?P<action>\w+?)/.+?(?P<file_name>\[.+\]): '
             r'(?P<curr_file>\d+) of (?P<total_files>\d+),'
             r' (?P<percent>\d+)% complete')
+
+        if args['resize']:
+            args = [magick, resizeargs]
+            process = subprocess.Popen(args,
+                                       stderr=subprocess.PIPE,
+                                       universal_newlines=True)
+
+            while True:
+                line = process.stderr.readline()
+                if not line:
+                    break
+                result = percentstr.match(line)
+                if result is not None:
+                    action = str(result.group('action'))
+                    percent = int(result.group('percent'))
+                    self.progress.emit(self.screen, percent, action)
+
         args = [magick, animateargs]
         process = subprocess.Popen(args,
                                    stderr=subprocess.PIPE,
@@ -71,3 +83,35 @@ class GifWorker(QtCore.QThread):
                 action = str(result.group('action'))
                 percent = int(result.group('percent'))
                 self.progress.emit(self.screen, percent, action)
+
+
+class getImageSize(QtCore.QThread):
+
+    update = QtCore.pyqtSignal(QtCore.QObject, str, str)
+
+    def __init__(self, screen, folder):
+        QtCore.QThread.__init__(self)
+        self.folder = folder
+        self.screen = screen
+
+    def run(self):
+        matchstr = re.compile(r'(?P<width>\d+)x(?P<height>\d+) ')
+        indentify = "ImageMagick/identify.exe"
+        loc = "imgs/%s/" % self.folder
+        idargs = [
+            ' %sout001.png' % loc
+        ]
+        args = [indentify, idargs]
+
+        process = subprocess.Popen(args, stdout=subprocess.PIPE,
+                                   universal_newlines=True)
+
+        while True:
+            line = process.stdout.readline()
+            if not line:
+                break
+            result = matchstr.search(line)
+            if result is not None:
+                width = result.group('width')
+                height = result.group('height')
+                self.update.emit(self.screen, width, height)

@@ -388,7 +388,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <layout class="QHBoxLayout" name="layout_resize">
             <item>
              <widget class="QLabel" name="lbl_resize_width">
               <property name="enabled">
@@ -400,32 +400,12 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="line_resize_width">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QLabel" name="lbl_resize_height">
               <property name="enabled">
                <bool>false</bool>
               </property>
               <property name="text">
                <string>Height</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="line_resize_height">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="acceptDrops">
-               <bool>true</bool>
-              </property>
-              <property name="clearButtonEnabled">
-               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -476,6 +456,19 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
@@ -495,28 +488,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_7">
-          <property name="font">
-           <font>
-            <italic>true</italic>
-           </font>
-          </property>
-          <property name="text">
-           <string>Overall Progress</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QProgressBar" name="progress_gif">
-          <property name="value">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
         </item>
         <item>
          <widget class="QLabel" name="lbl_gif_currtask">
