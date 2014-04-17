@@ -3,7 +3,7 @@ GifExtract
 
 Extract gifs from videos using FFmpeg and ImageMagick.
 
-<h1>Current Status: Alpha</h1>
+<h2>Current Status: Almost-Beta</h2>
 
 **Dependencies**
 
