@@ -6,7 +6,7 @@ from interface.menus.RequestDescription import RequestDescription
 class JobQueue(object):
     
     def __init__(self, ui, stringlist=None):
-        self.ui = ui
+        self.screen = ui
         if stringlist is not None:
             self.jobs = stringlist
         else:
@@ -29,10 +29,11 @@ class JobQueue(object):
         return True
 
     def listJobs(self):
-        self.ui.tree_queue.clear()
+        self.screen.tab_queue.ui.tree_queue.clear()
         for job in self.jobs:
-            root = QtWidgets.QTreeWidgetItem(self.ui.tree_queue,
-                                             [job["srcfile"], job["desc"]])
+            root = QtWidgets.QTreeWidgetItem(
+                self.screen.tab_queue.ui.tree_queue,
+                [job["desc"], ""])
             sub01 = QtWidgets.QTreeWidgetItem(root, ["Start Time",
                                                      job['time_start']])
             sub02 = QtWidgets.QTreeWidgetItem(root, ["Duration",
@@ -40,7 +41,9 @@ class JobQueue(object):
             sub03 = QtWidgets.QTreeWidgetItem(root, ["Frames/Sec",
                                                      job['fps']])
             sub04 = QtWidgets.QTreeWidgetItem(root, ["Subtitles",
-                                              job["subs"]])
+                                                     job["subs"]])
+            sub05 = QtWidgets.QTreeWidgetItem(root, ["Video File",
+                                                     job['srcfile']])
 
     def getJobByDescription(self, desc):
         for job in self.jobs:
@@ -57,23 +60,23 @@ def addToQueue(queue, job):
     queue.addItem(job)
 
 
-def convertToString(screen):
-    srcfile = screen.ui.line_videoin.text()
-    time_start = screen.ui.time_start.text()
+def convertToVideoString(screen):
+    srcfile = screen.tab_video.ui.line_videoin.text()
+    time_start = screen.tab_video.ui.time_start.text()
     
-    isDuration = screen.ui.chk_vidprefdur.isChecked()
+    isDuration = screen.tab_video.ui.chk_vidprefdur.isChecked()
     if isDuration:
-        duration = screen.ui.time_end.text()
+        duration = screen.tab_video.ui.time_end.text()
     else:
-        sttime = screen.ui.time_start.time()
-        entime = screen.ui.time_end.time()
+        sttime = screen.tab_video.ui.time_start.time()
+        entime = screen.tab_video.ui.time_end.time()
         gap = sttime.msecsTo(entime)
         holder = QtCore.QTime(0, 0, 0, 0)
         holder = holder.addMSecs(gap)
         duration = holder.toString('hh:mm:ss.zzz')
 
-    subs = screen.ui.cmb_subs.currentText()
-    fps = screen.ui.line_fps.text()
+    subs = screen.tab_video.ui.cmb_subs.currentText()
+    fps = screen.tab_video.ui.line_fps.text()
 
     popup = RequestDescription(screen)
     result = popup.exec()

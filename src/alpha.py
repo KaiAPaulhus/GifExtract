@@ -5,8 +5,9 @@ import listener
 import config
 import ffmpeg
 import queue
-import interface.tab_gif
-import interface.tab_video
+import interface.menus.Frame_CreateGif
+import interface.menus.Frame_ExtractFrames
+import interface.menus.Frame_Queue
 
 
 class Screen(QtWidgets.QMainWindow):
@@ -19,7 +20,15 @@ class Screen(QtWidgets.QMainWindow):
             self.config = config.Config(self)
 
         def setupQueue():
-            self.queue = queue.JobQueue(self.ui)
+            self.queue = queue.JobQueue(self)
+
+        def setupTabs():
+            self.tab_video = interface.menus.Frame_ExtractFrames.Frame(self)
+            self.ui.tabWidget.addTab(self.tab_video, "Frame Extraction")
+            self.tab_gif = interface.menus.Frame_CreateGif.Frame(self)
+            self.ui.tabWidget.addTab(self.tab_gif, "Gif Creation")
+            self.tab_queue = interface.menus.Frame_Queue.Frame(self)
+            self.ui.tabWidget.addTab(self.tab_queue, "Queue")
 
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_wnd_gifextract()
@@ -27,34 +36,15 @@ class Screen(QtWidgets.QMainWindow):
         
         self.slots = listener.Slots(self)
         self.createLinks()
-        
+
         setupConfig()
+        setupTabs()
         setupFFMpeg()
         setupQueue()
-        interface.tab_gif.addCustomWidgets(self)
-        interface.tab_video.fillElementsFromConfig(self, self.config)
-        interface.tab_gif.fillElementsFromConfig(self, self.config)
+
 
     def createLinks(self):
-        self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)
-        self.ui.cmb_fps.currentIndexChanged.connect(self.slots.fpsComboChanged)
-        self.ui.btn_browsevideofile.clicked.connect(self.slots.locateVideo)
-        self.ui.btn_vidanalyze.clicked.connect(self.slots.scanVideo)
-        self.ui.btn_loadsubs.clicked.connect(self.slots.loadExternalSubs)
         self.ui.actionPreferences.triggered.connect(self.openOptions)
-        self.ui.btn_extract_queue.clicked.connect(self.slots.addToQueue)
-        self.ui.btn_extract_exe.clicked.connect(self.slots.extractFrames)
-        self.ui.btn_queue_exe.clicked.connect(self.slots.executeQueueItem)
-        self.ui.btn_queue_exeall.clicked.connect(self.slots.executeAllQueue)
-
-        self.ui.btn_refreshjobs.clicked.connect(self.slots.refreshJobList)
-        self.ui.check_resize.stateChanged.connect(
-            self.slots.resizeCheckboxStateChanged)
-        self.ui.btn_creategif.clicked.connect(self.slots.createAnimatedImage)
-        self.ui.cmb_job.currentIndexChanged.connect(
-            self.slots.jobSelectionChanged)
-        self.ui.check_resize_keepratio.stateChanged.connect(
-            self.slots.ratioCheckChanged)
         
     def openOptions(self):
         import interface.menus.ConfigMenu

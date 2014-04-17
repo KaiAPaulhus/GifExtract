@@ -1,16 +1,17 @@
 {
-    "savedgifsettings": {
-        "tumblrsize": {
-            "delay": 12, 
-            "loop": false, 
-            "width": 400, 
-            "height": 200
-        }
-    }, 
-    "gif_dfltdelay": 12, 
-    "vid_autoanalyze": false, 
-    "vid_alwaysduration": true,
-    "vid_roundfps": true, 
-    "gen_ffmpeg": "ffmpeg/bin", 
-    "gen_imagemagick": "imagemagick"
+  "savedgifsettings": {
+    "tumblrsize": {
+      "name": "Tumblr",
+      "delay": 12,
+      "loop": true,
+      "width": 400,
+      "height": 200
+    }
+  },
+  "gif_dfltdelay": 12,
+  "vid_autoanalyze": false,
+  "vid_alwaysduration": true,
+  "vid_roundfps": true,
+  "gen_ffmpeg": "ffmpeg/bin",
+  "gen_imagemagick": "imagemagick"
 }

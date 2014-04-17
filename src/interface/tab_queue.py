@@ -2,7 +2,7 @@ import queue
 
 
 def addToQueue(screen):
-    string = queue.convertToString(screen)
+    string = queue.convertToVideoString(screen)
     if string is not None:
         result = screen.queue.addItem(string)
         if not result:
@@ -12,9 +12,11 @@ def addToQueue(screen):
 
 
 def executeQueueItem(screen):
-    curritem = screen.ui.tree_queue.currentItem()
+    curritem = screen.tab_queue.ui.tree_queue.currentItem()
+    print("curritem:", curritem)
     if curritem is not None:
-        text = curritem.text(1)
+        text = curritem.text(0)
+        print(text)
         job = screen.queue.getJobByDescription(text)
         if job is not None:
             screen.ffmpeg.extractFrames(job)
