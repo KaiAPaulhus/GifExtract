@@ -1,16 +1,16 @@
 {
-  "gen_ffmpeg": "ffmpeg/bin",
-  "gen_imagemagick": "Please select ImageMagick's 'Bin' folder.",
-  "gif_dfltdelay": 24,
-  "savedgifsettings": {
-    "tumblrsize": {
-      "width": 400,
-      "height": 200,
-      "loop": false,
-      "delay": 12
-    }
-  },
-  "vid_alwaysduration": true,
-  "vid_autoanalyze": true,
-  "vid_roundfps": true
+    "savedgifsettings": {
+        "tumblrsize": {
+            "delay": 12, 
+            "loop": false, 
+            "width": 400, 
+            "height": 200
+        }
+    }, 
+    "gif_dfltdelay": 12, 
+    "vid_autoanalyze": false, 
+    "vid_alwaysduration": true, 
+    "vid_roundfps": true, 
+    "gen_ffmpeg": "ffmpeg/bin", 
+    "gen_imagemagick": "imagemagick/"
 }

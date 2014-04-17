@@ -1,4 +1,4 @@
-from interface.design.ui_screen import Ui_wnd_pyjiff
+from interface.design.ui_screen import Ui_wnd_gifextract
 from PyQt5 import QtWidgets
 import sys
 import listener
@@ -8,6 +8,7 @@ import queue
 import interface.tab_gif
 import interface.tab_video
 
+
 class Screen(QtWidgets.QMainWindow):
   
     def __init__(self, parent=None):
@@ -16,14 +17,13 @@ class Screen(QtWidgets.QMainWindow):
             self.ffmpeg = ffmpeg.FFmpeg(fileloc)
 
         def setupConfig():
-            self.config = config.Config()
-            self.config.updateScreen(self.ui)
+            self.config = config.Config(self)
 
         def setupQueue():
             self.queue = queue.JobQueue(self.ui)
 
         QtWidgets.QWidget.__init__(self, parent)
-        self.ui = Ui_wnd_pyjiff()
+        self.ui = Ui_wnd_gifextract()
         self.ui.setupUi(self)
         
         self.slots = listener.Slots(self)
@@ -37,8 +37,6 @@ class Screen(QtWidgets.QMainWindow):
     def createLinks(self):
         self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)
         self.ui.cmb_fps.currentIndexChanged.connect(self.slots.fpsComboChanged)
-        self.ui.btn_ffmpegbrowse.clicked.connect(self.slots.locateExtractor)
-        self.ui.btn_ffmpegsave.clicked.connect(self.slots.saveFFmpegLocation)
         self.ui.btn_browsevideofile.clicked.connect(self.slots.locateVideo)
         self.ui.btn_vidanalyze.clicked.connect(self.slots.scanVideo)
         self.ui.btn_loadsubs.clicked.connect(self.slots.loadExternalSubs)

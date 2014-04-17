@@ -32,11 +32,12 @@ def createSaveDialog(screen):
 
 class Config(object):
     
-    def __init__(self):
+    def __init__(self, screen=None):
         self.config = {'JSON_NOT_LOADED': 'YET'}
         self.fileloc = 'settings.json'
         self.defaults = setDefaults()
         self.loadConfig()
+        self.screen = screen
              
     def createDefaultConfig(self):
         self.config = self.defaults
@@ -56,9 +57,9 @@ class Config(object):
         except KeyError:
             return "KEY_NOT_FOUND"
             
-    def saveConfig(self, screen=None):
-        if screen is not None:
-            result = createSaveDialog(screen)
+    def saveConfig(self):
+        if self.screen is not None:
+            result = createSaveDialog(self.screen)
             if result == QtWidgets.QMessageBox.Yes:
                 self.performSave()
         else:
@@ -74,10 +75,7 @@ class Config(object):
             
     def updateConfig(self, key, value):
         self.config[key] = value
-        
-    def updateScreen(self, screen):
-        ffkey = self.getKey('gen_ffmpeg')
-        screen.line_ffmpeg.setText(ffkey)
 
-    def saveButtonPressed(self, arg1, arg2):
-        print(arg1, arg2)
+    def saveButtonPressed(self):
+        print('pressed')
+        self.saveConfig()

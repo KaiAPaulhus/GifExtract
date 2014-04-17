@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>wnd_pyjiff</class>
- <widget class="QMainWindow" name="wnd_pyjiff">
+ <class>wnd_gifextract</class>
+ <widget class="QMainWindow" name="wnd_gifextract">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
+    <width>403</width>
     <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>PyJiff</string>
+   <string>GifExtract</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -27,37 +27,6 @@
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>FFmpeg Bin Folder</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="line_ffmpeg"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_ffmpegbrowse">
-              <property name="text">
-               <string>Browse</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_ffmpegsave">
-              <property name="text">
-               <string>Save</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
@@ -615,7 +584,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>404</width>
+     <width>403</width>
      <height>21</height>
     </rect>
    </property>
@@ -653,9 +622,6 @@
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>line_ffmpeg</tabstop>
-  <tabstop>btn_ffmpegbrowse</tabstop>
-  <tabstop>btn_ffmpegsave</tabstop>
   <tabstop>line_videoin</tabstop>
   <tabstop>btn_browsevideofile</tabstop>
   <tabstop>time_start</tabstop>

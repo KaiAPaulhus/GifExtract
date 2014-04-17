@@ -2,18 +2,19 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\options.ui'
 #
-# Created: Thu Apr 17 14:14:44 2014
+# Created: Thu Apr 17 15:22:32 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_wnd_pyjiff_options(object):
-    def setupUi(self, wnd_pyjiff_options):
-        wnd_pyjiff_options.setObjectName("wnd_pyjiff_options")
-        wnd_pyjiff_options.resize(356, 262)
-        self.centralwidget = QtWidgets.QWidget(wnd_pyjiff_options)
+class Ui_wnd_gifextract_options(object):
+    def setupUi(self, wnd_gifextract_options):
+        wnd_gifextract_options.setObjectName("wnd_gifextract_options")
+        wnd_gifextract_options.resize(356, 262)
+        wnd_gifextract_options.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.centralwidget = QtWidgets.QWidget(wnd_gifextract_options)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -97,29 +98,29 @@ class Ui_wnd_pyjiff_options(object):
         self.btn_saveconfig.setObjectName("btn_saveconfig")
         self.horizontalLayout_5.addWidget(self.btn_saveconfig)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
-        wnd_pyjiff_options.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(wnd_pyjiff_options)
+        wnd_gifextract_options.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(wnd_gifextract_options)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 356, 21))
         self.menubar.setObjectName("menubar")
-        wnd_pyjiff_options.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(wnd_pyjiff_options)
+        wnd_gifextract_options.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(wnd_gifextract_options)
         self.statusbar.setObjectName("statusbar")
-        wnd_pyjiff_options.setStatusBar(self.statusbar)
+        wnd_gifextract_options.setStatusBar(self.statusbar)
 
-        self.retranslateUi(wnd_pyjiff_options)
-        QtCore.QMetaObject.connectSlotsByName(wnd_pyjiff_options)
+        self.retranslateUi(wnd_gifextract_options)
+        QtCore.QMetaObject.connectSlotsByName(wnd_gifextract_options)
 
-    def retranslateUi(self, wnd_pyjiff_options):
+    def retranslateUi(self, wnd_gifextract_options):
         _translate = QtCore.QCoreApplication.translate
-        wnd_pyjiff_options.setWindowTitle(_translate("wnd_pyjiff_options", "PyJiff - Preferences"))
-        self.label.setText(_translate("wnd_pyjiff_options", "FFmpeg Bin Folder"))
-        self.btn_ffmpegbrowse.setText(_translate("wnd_pyjiff_options", "Browse"))
-        self.label_2.setText(_translate("wnd_pyjiff_options", "ImageMagick Bin Folder"))
-        self.btn_imbrowse.setText(_translate("wnd_pyjiff_options", "Browse"))
-        self.check_fpsrounding.setText(_translate("wnd_pyjiff_options", "Round Frames Per Second"))
-        self.check_autoscan.setText(_translate("wnd_pyjiff_options", "Automatically Scan Videos"))
-        self.check_usedurationalways.setText(_translate("wnd_pyjiff_options", "Always Use Duration Instead of Endtime"))
-        self.label_4.setText(_translate("wnd_pyjiff_options", "Gifs"))
-        self.label_3.setText(_translate("wnd_pyjiff_options", "Default Delay"))
-        self.btn_saveconfig.setText(_translate("wnd_pyjiff_options", "Save"))
+        wnd_gifextract_options.setWindowTitle(_translate("wnd_gifextract_options", "GifExtract - Options"))
+        self.label.setText(_translate("wnd_gifextract_options", "FFmpeg Bin Folder"))
+        self.btn_ffmpegbrowse.setText(_translate("wnd_gifextract_options", "Browse"))
+        self.label_2.setText(_translate("wnd_gifextract_options", "ImageMagick Bin Folder"))
+        self.btn_imbrowse.setText(_translate("wnd_gifextract_options", "Browse"))
+        self.check_fpsrounding.setText(_translate("wnd_gifextract_options", "Round Frames Per Second"))
+        self.check_autoscan.setText(_translate("wnd_gifextract_options", "Automatically Scan Videos"))
+        self.check_usedurationalways.setText(_translate("wnd_gifextract_options", "Always Use Duration Instead of Endtime"))
+        self.label_4.setText(_translate("wnd_gifextract_options", "Gifs"))
+        self.label_3.setText(_translate("wnd_gifextract_options", "Default Delay"))
+        self.btn_saveconfig.setText(_translate("wnd_gifextract_options", "Save"))
 
