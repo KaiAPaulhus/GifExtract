@@ -101,5 +101,6 @@ def createAnimatedImage(screen):
 
 
 def progressUpdate(screen, value, action):
+    pass
     screen.tab_gif.ui.progress_gif_sub.setValue(value)
     screen.tab_gif.ui.lbl_gif_currtask.setText(action)

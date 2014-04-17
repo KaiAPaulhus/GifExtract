@@ -64,7 +64,12 @@ class Listener(object):
             valdict = getBalancedValueDict(self.screen)
 
         self.formatter.updateString(valdict)
+        self.formatter.finished.connect(self.taskFinished)
         self.formatter.start()
+
+    def taskFinished(self, args=None):
+        self.tab.ui.progress_gif_sub.setValue(0)
+        self.tab.ui.lbl_gif_currtask.setText('Finished')
 
     def jobSelectionChanged(self):
         interface.tab_gif.jobSelected(self.screen)
@@ -73,11 +78,12 @@ class Listener(object):
         interface.tab_gif.keepProportionsCheckboxStateChanged(self.screen)
 
     def updateDebugConsole(self):
-        valdict = createValueDict(self.screen)
-        for k, v in valdict.items():
-            print(k, v)
-        self.formatter.updateString(valdict)
-        self.formatter.start()
+        pass
+        # valdict = createValueDict(self.screen)
+        # for k, v in valdict.items():
+        #     print(k, v)
+        # self.formatter.updateString(valdict)
+        # self.formatter.start()
 
     def radioCustomChecked(self):
         if self.screen.tab_gif.ui.radio_custom.isChecked():

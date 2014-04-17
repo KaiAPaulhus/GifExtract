@@ -190,12 +190,18 @@ class CommandFormatter(QtCore.QThread):
         process = subprocess.Popen(args,
                                    stderr=subprocess.PIPE,
                                    universal_newlines=True)
+
+        itercount = 0
         while True:
             line = process.stderr.readline()
             if not line:
                 break
-            result = percentstr.match(line)
-            if result is not None:
-                action = str(result.group('action'))
-                percent = int(result.group('percent'))
-                self.progress.emit(self.screen, percent, action)
+
+            itercount += 1
+            if itercount == 5000:
+                itercount = 0
+                result = percentstr.match(line)
+                if result is not None:
+                    action = str(result.group('action'))
+                    percent = int(result.group('percent'))
+                    self.progress.emit(self.screen, percent, action)
