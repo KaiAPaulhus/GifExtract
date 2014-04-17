@@ -1,0 +1,18 @@
+#FORMAT		
+#key\tpriority\tformatted (with %s as the value)		
+monitor	0	 -monitor
+input	2	 imgs/%s/*.png
+delay	3	 -set delay 1x%s
+loops	3	 -loop %s
+set_comment	3	
+coalesce	1	 -coalesce
+output	25	 out/%s.gif
+optimize_plus	4	 -layers OptimizePlus
+optimize	4	 -layers Optimize
+optimize_plustrans	4	 -layers OptimizePlus -layers OptimizeTransparency
+optimize_frame	4	 -layers OptimizeFrame
+optimize_trans	4	 -layers OptimizeTransparency
+fuzzfactor	3	 -fuzz %s%
+noaa	3	 +antialias
+flattencolors	5	 +map
+nocomments	3	 +set comment

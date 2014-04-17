@@ -8,7 +8,7 @@
       "height": 200
     }
   },
-  "gif_dfltdelay": 12,
+  "gif_dfltdelay": 24,
   "vid_autoanalyze": false,
   "vid_alwaysduration": true,
   "vid_roundfps": true,

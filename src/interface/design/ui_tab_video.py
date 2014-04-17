@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\tab_video.ui'
 #
-# Created: Thu Apr 17 17:17:27 2014
+# Created: Thu Apr 17 21:14:16 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_frame_tab_video(object):
     def setupUi(self, frame_tab_video):
         frame_tab_video.setObjectName("frame_tab_video")
-        frame_tab_video.resize(400, 273)
+        frame_tab_video.resize(381, 273)
         frame_tab_video.setFrameShape(QtWidgets.QFrame.StyledPanel)
         frame_tab_video.setFrameShadow(QtWidgets.QFrame.Raised)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(frame_tab_video)

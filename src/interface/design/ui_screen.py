@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\Kyras\Google Drive\coding_projects\PyCharm\GifExtractor\data\screen.ui'
 #
-# Created: Thu Apr 17 17:56:21 2014
+# Created: Thu Apr 17 21:13:33 2014
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!

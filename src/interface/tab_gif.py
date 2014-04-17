@@ -54,19 +54,15 @@ def populateJobList(screen):
 
 
 def populatePresetsList(tab_gif, config):
-    #TODO: Add presets to list
     key = config.getKey("savedgifsettings")
     for k, v in key.items():
         tab_gif.ui.cmb_loadgifsettings.addItem(v['name'])
 
 
 def resizeCheckboxStateChanged(screen):
-    state = screen.ui.check_resize.isChecked()
+    state = screen.tab_gif.ui.check_resize.isChecked()
 
     widgetlist = [
-        screen.tab_gif.ui.check_resize_keepratio,
-        screen.tab_gif.ui.lbl_resize_width,
-        screen.tab_gif.ui.lbl_resize_height,
         screen.tab_gif.ui.line_resize_width,
         screen.tab_gif.ui.line_resize_height
     ]
@@ -96,7 +92,6 @@ def createAnimatedImage(screen):
         args = dict()
         args['name'] = currjob
         args['resize'] = screen.tab_gif.ui.check_resize.isChecked()
-        args['loop'] = screen.tab_gif.ui.check_gif_loop.isChecked()
         args['width'] = screen.tab_gif.ui.line_resize_width.text()
         args['height'] = screen.tab_gif.ui.line_resize_height.text()
         args['delay'] = screen.tab_gif.ui.spin_delay.value()

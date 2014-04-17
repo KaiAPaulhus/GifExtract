@@ -9,6 +9,7 @@ Setup localization support (with QLinguist).
 Clean up and optimize user interface design.
 Add deeper settings to Gif creation. (Compression methods, etc)
 Add working subtitles to frame extraction.
+Add support to making HTML capable MP4 gifs
 
 ==Low Priority==
 Determine optimal distribution techniques.

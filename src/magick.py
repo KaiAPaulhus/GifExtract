@@ -116,3 +116,86 @@ class getImageSize(QtCore.QThread):
                 width = result.group('width')
                 height = result.group('height')
                 self.update.emit(self.screen, width, height)
+
+
+class CommandFormatter(QtCore.QThread):
+
+    progress = QtCore.pyqtSignal(QtCore.QObject, int, str, name="progressmade")
+
+    def __init__(self, display=None, screen=None):
+        QtCore.QThread.__init__(self)
+        self.display = display
+        self.listargs = []
+        self.afm = None
+        self.cmdorder = None
+        self.screen = screen
+
+    def run(self):
+        if self.listargs is not []:
+            self.testResults()
+
+    def setDisplay(self, disp):
+        self.display = disp
+
+    def getCommandOrder(self):
+        if self.afm is None:
+            with open('data/autoformat_imagemagick.afm') as file:
+                self.afm = file.readlines()
+
+        if self.cmdorder is None:
+            order = dict()
+
+            for command in self.afm:
+                if command[0] != "#":
+                    cmd = command.split('\t')
+                    order[cmd[0]] = cmd[1]
+            self.cmdorder = order
+        return self.cmdorder
+
+    def updateString(self, valdict):
+        cmdorder = self.getCommandOrder()
+        arglist = [' -monitor ']
+        for x in range(0, 99):
+            for k, v in valdict.items():
+                priority = cmdorder[k]
+                if str(priority) == str(x):
+                    formattedarg = self.formatArguement(k, v)
+                    arglist.append(formattedarg)
+        self.listargs = arglist
+
+    def writeCommand(self, strin):
+        self.display.setText(strin)
+
+    def formatArguement(self, key, value):
+        if self.afm is None:
+            with open('data/autoformat_imagemagick.afm') as file:
+                self.afm = file.readlines()
+
+        for command in self.afm:
+            if command[0] != "#":
+                cmd = command.split('\t')
+                if str(cmd[0]) == key:
+                    return str(cmd[2]).replace('%s', str(value)).rstrip()
+
+    def testResults(self):
+
+        percentstr = re.compile(
+            r'(?P<action>\w+?)/.+?(?P<file_name>\[.+\]): '
+            r'(?P<curr_file>\d+) of (?P<total_files>\d+),'
+            r' (?P<percent>\d+)% complete')
+
+        magickdir = self.screen.config.getKey(
+            'gen_imagemagick') + '/convert.exe'
+        args = [magickdir, self.listargs]
+        process = subprocess.Popen(args,
+                                   stderr=subprocess.PIPE,
+                                   universal_newlines=True)
+        while True:
+            line = process.stderr.readline()
+            if not line:
+                break
+            result = percentstr.match(line)
+            if result is not None:
+                action = str(result.group('action'))
+                percent = int(result.group('percent'))
+                self.progress.emit(self.screen, percent, action)
