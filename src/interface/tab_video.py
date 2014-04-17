@@ -5,10 +5,9 @@ import queue
 from interface.core import openDialog
 
 
-def saveFFmpegLocation(screen):
-    newval = screen.ui.line_ffmpeg.text()
-    screen.config.updateConfig('ffmpeg', newval)
-    screen.config.saveConfig(screen)
+#Basic function, keep at top of file.
+def fillElementsFromConfig(screen, config):
+    screen.ui.chk_vidprefdur.setChecked(config.getKey('vid_alwaysduration'))
 
 
 def extractFramesFromVideo(screen):
@@ -86,10 +85,3 @@ def preferDurationOverEndtime(screen):
         screen.ui.lbl_endtime.setText("Duration")
     else:
         screen.ui.lbl_endtime.setText("End Time")
-
-
-def setExtractorLocations(screen):
-    startdir = "C:/"
-    typefilter = None
-    dest = screen.ui.line_ffmpeg
-    openDialog(screen, startdir, typefilter, dest, True)

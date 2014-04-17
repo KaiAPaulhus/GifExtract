@@ -22,7 +22,7 @@ class FileDialog(QtWidgets.QFileDialog):
     def fileReady(self):
         self.fileChosen(self.app, self.destfield, self.selectedFiles()[0])
         if self.app is not None:
-            if self.app.config.getKey('autoanalyze'):
+            if self.app.config.getKey('vid_autoanalyze'):
                 self.app.slots.scanVideo()
 
     @staticmethod

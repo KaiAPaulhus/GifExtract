@@ -5,6 +5,12 @@ from interface.controls import LinkedRatioBox
 import magick
 
 
+#Basic function, keep at top of file.
+def fillElementsFromConfig(screen, config):
+    screen.ui.spin_delay.setValue(config.getKey('gif_dfltdelay'))
+
+
+#Basic function, keep at top of file.
 def addCustomWidgets(screen):
     screen.ui.line_resize_height = LinkedRatioBox.LinkedRatioBox()
     screen.ui.line_resize_width = LinkedRatioBox.LinkedRatioBox()

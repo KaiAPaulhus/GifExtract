@@ -1,7 +1,6 @@
 ==High Priority==
 Save and load Gif creation presets from JSON
 Add more options to the preferences screen.
-Properly load and save settings to a settings file.
 
 ==Medium Priority==
 Save a keyfile with the frame extraction with information about the scene.

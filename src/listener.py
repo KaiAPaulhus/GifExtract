@@ -45,12 +45,6 @@ class Slots(object):
     def useDuration(self):
         interface.tab_video.preferDurationOverEndtime(self.screen)
 
-    def locateExtractor(self):
-        interface.tab_video.setExtractorLocations(self.screen)
-
-    def saveFFmpegLocation(self):
-        interface.tab_video.saveFFmpegLocation(self.screen)
-
     #Interfaces relating to the queue functions.
     def addToQueue(self):
         interface.tab_queue.addToQueue(self.screen)

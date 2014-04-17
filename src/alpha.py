@@ -13,8 +13,7 @@ class Screen(QtWidgets.QMainWindow):
   
     def __init__(self, parent=None):
         def setupFFMpeg():
-            fileloc = self.config.getKey("ffmpeg")
-            self.ffmpeg = ffmpeg.FFmpeg(fileloc)
+            self.ffmpeg = ffmpeg.FFmpeg(self.config)
 
         def setupConfig():
             self.config = config.Config(self)
@@ -33,6 +32,8 @@ class Screen(QtWidgets.QMainWindow):
         setupFFMpeg()
         setupQueue()
         interface.tab_gif.addCustomWidgets(self)
+        interface.tab_video.fillElementsFromConfig(self, self.config)
+        interface.tab_gif.fillElementsFromConfig(self, self.config)
 
     def createLinks(self):
         self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)

@@ -5,9 +5,12 @@ import os
 
 class FFmpeg(object):
     
-    def __init__(self, binfolder):
-        self.ffmpeg = binfolder + "/ffmpeg.exe"
-        self.probe = "ffmpeg/bin/ffprobe.exe"
+    def __init__(self, config):
+        self.config = config
+
+        bindir = self.config.getKey('gen_ffmpeg')
+        self.ffmpeg = bindir + "/ffmpeg.exe"
+        self.probe = bindir + "/ffprobe.exe"
 
     def getVideoInfo(self, file):
         subargs = [

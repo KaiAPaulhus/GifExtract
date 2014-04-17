@@ -9,8 +9,8 @@
     }, 
     "gif_dfltdelay": 12, 
     "vid_autoanalyze": false, 
-    "vid_alwaysduration": true, 
+    "vid_alwaysduration": true,
     "vid_roundfps": true, 
     "gen_ffmpeg": "ffmpeg/bin", 
-    "gen_imagemagick": "imagemagick/"
+    "gen_imagemagick": "imagemagick"
 }

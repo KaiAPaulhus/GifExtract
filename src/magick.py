@@ -15,8 +15,8 @@ class GifWorker(QtCore.QThread):
 
     def run(self):
         args = self.args
-        #TODO: Get location from config
-        magick = "ImageMagick/convert.exe"
+        magickdir = self.screen.config.getKey('gen_imagemagick')
+        magick = magickdir + "/convert.exe"
         imagedir = "imgs/" + args['name'] + '/'
         outpath = "imgs/out"
 
@@ -96,7 +96,8 @@ class getImageSize(QtCore.QThread):
 
     def run(self):
         matchstr = re.compile(r'(?P<width>\d+)x(?P<height>\d+) ')
-        indentify = "ImageMagick/identify.exe"
+        magickdir = self.screen.config.getKey('gen_imagemagick')
+        indentify = magickdir + "/identify.exe"
         loc = "imgs/%s/" % self.folder
         idargs = [
             ' %sout001.png' % loc
