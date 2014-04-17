@@ -1,7 +1,4 @@
-from ui_options import Ui_wnd_pyjiff_options
-
 from PyQt5 import QtWidgets
-from PyQt5 import QtCore
 
 import json
 
@@ -12,10 +9,10 @@ def setDefaults():
         default_autoanalyze = False
         default_roundfps = True
 
-        defaults = {'ffmpeg': default_ffmpeg,
-                    'imagemagick': default_imagemagick,
-                    'autoanalyze': default_autoanalyze,
-                    'roundfps': default_roundfps}
+        defaults = {'gen_ffmpeg': default_ffmpeg,
+                    'gen_imagemagick': default_imagemagick,
+                    'vid_autoanalyze': default_autoanalyze,
+                    'vid_roundfps': default_roundfps}
         return defaults
 
 
@@ -79,27 +76,8 @@ class Config(object):
         self.config[key] = value
         
     def updateScreen(self, screen):
-        ffkey = self.getKey('ffmpeg')
+        ffkey = self.getKey('gen_ffmpeg')
         screen.line_ffmpeg.setText(ffkey)
 
-
-class ConfigMenu(QtWidgets.QMainWindow):
-
-    def __init__(self, parent, config):
-        QtWidgets.QWidget.__init__(self, parent)
-        self.ui = Ui_wnd_pyjiff_options()
-        self.ui.setupUi(self)
-        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-        self.config = config
-        
-        self.fillElements()
-    
-    #This exists only to save typing and space in the fillElements function
-    def get(self, key):
-        return self.config.getKey(key)
-
-    def fillElements(self):
-        self.ui.line_ffmpegfolder.setText(self.get('ffmpeg'))
-        self.ui.line_imfolder.setText(self.get('imagemagick'))
-        self.ui.check_autoscan.setChecked(self.get('autoanalyze'))
-        self.ui.check_fpsrounding.setChecked(self.get('roundfps'))
+    def saveButtonPressed(self, arg1, arg2):
+        print(arg1, arg2)

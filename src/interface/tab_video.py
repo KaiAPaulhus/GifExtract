@@ -2,7 +2,13 @@
 #for those relating to the queue system.
 
 import queue
-import interface
+from interface.core import openDialog
+
+
+def saveFFmpegLocation(screen):
+    newval = screen.ui.line_ffmpeg.text()
+    screen.config.updateConfig('ffmpeg', newval)
+    screen.config.saveConfig(screen)
 
 
 def extractFramesFromVideo(screen):
@@ -47,18 +53,18 @@ def setExternalSubtitles(screen):
     startdir = "C:/"
     typefilter = "Subtitles (*.srt *.ass *.sub)"
     dest = screen.ui.cmb_subs
-    interface.openDialog(screen, startdir, typefilter, dest, False)
+    openDialog(screen, startdir, typefilter, dest, False)
 
 
 def setVideoFile(screen):
     startdir = "C:/test"
     typefilter = "Videos (*.avi *.mp4 *.mkv *.mov *.wmv *.divx *.vidx)"
     dest = screen.ui.line_videoin
-    interface.openDialog(screen, startdir, typefilter, dest, False)
+    openDialog(screen, startdir, typefilter, dest, False)
 
 
 def getFPSComboBoxValues(screen, fps):
-    isrounded = screen.config.getKey('roundfps')
+    isrounded = screen.config.getKey('vid_roundfps')
     if isrounded:
         fpslist = [str(round(fps))]
     else:
@@ -86,4 +92,4 @@ def setExtractorLocations(screen):
     startdir = "C:/"
     typefilter = None
     dest = screen.ui.line_ffmpeg
-    interface.openDialog(screen, startdir, typefilter, dest, True)
+    openDialog(screen, startdir, typefilter, dest, True)

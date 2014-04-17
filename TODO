@@ -1,0 +1,17 @@
+==High Priority==
+Save and load Gif creation presets from JSON
+Add more options to the preferences screen.
+Properly load and save settings to a settings file.
+
+==Medium Priority==
+Save a keyfile with the frame extraction with information about the scene.
+Use that keyfile to set the default delay when loading a job.
+Setup localization support (with QLinguist).
+Clean up and optimize user interface design.
+Add deeper settings to Gif creation. (Compression methods, etc)
+Add working subtitles to frame extraction.
+
+==Low Priority==
+Determine optimal distribution techniques.
+Allow viewing of the video within the program.
+Add support for files with multiple video streams (ex, .mkv)

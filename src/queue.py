@@ -1,17 +1,6 @@
-from PyQt5 import QtWidgets, QtCore
 import json
-from ui_addtoqueue import Ui_Dialog
-
-
-class RequestDescription(QtWidgets.QDialog):
-
-    def __init__(self, parent=None):
-        QtWidgets.QDialog.__init__(self, parent)
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self)
-
-    def getDescription(self):
-        return self.ui.line_description.text()
+from PyQt5 import QtWidgets, QtCore
+from interface.menus.RequestDescription import RequestDescription
 
 
 class JobQueue(object):

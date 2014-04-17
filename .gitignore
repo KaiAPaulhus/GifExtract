@@ -2,11 +2,11 @@ ffmpeg/
 imagemagick/
 .idea/
 imgs/
-Compile Options.bat
-Compile Screen.bat
 Run.bat
-todo.txt
-video_info.json
 src/__pycache__/
-archaic/
+src/interface/__pycache__
+src/interface/design/__pycache__
+src/interface/menus/__pycache__
+src/interface/controls/__pycache__
 .gitignore
+planning/

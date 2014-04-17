@@ -1,11 +1,12 @@
-from ui_screen import Ui_wnd_pyjiff
+from interface.design.ui_screen import Ui_wnd_pyjiff
 from PyQt5 import QtWidgets
 import sys
 import listener
 import config
 import ffmpeg
 import queue
-import interface_giffer
+import interface.tab_gif
+import interface.tab_video
 
 class Screen(QtWidgets.QMainWindow):
   
@@ -31,7 +32,7 @@ class Screen(QtWidgets.QMainWindow):
         setupConfig()
         setupFFMpeg()
         setupQueue()
-        interface_giffer.addCustomWidgets(self)
+        interface.tab_gif.addCustomWidgets(self)
 
     def createLinks(self):
         self.ui.chk_vidprefdur.stateChanged.connect(self.slots.useDuration)
@@ -57,7 +58,8 @@ class Screen(QtWidgets.QMainWindow):
             self.slots.ratioCheckChanged)
         
     def openOptions(self):
-        options = config.ConfigMenu(self, self.config)
+        import interface.menus.ConfigMenu
+        options = interface.menus.ConfigMenu.ConfigMenu(self, self.config)
         options.show()
 
 if __name__ == "__main__":
