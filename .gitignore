@@ -10,3 +10,4 @@ src/interface/menus/__pycache__
 src/interface/controls/__pycache__
 .gitignore
 planning/
+out/
