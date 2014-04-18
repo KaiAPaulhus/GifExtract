@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>474</width>
-    <height>504</height>
+    <width>518</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,18 +59,11 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>10</width>
+         <width>40</width>
          <height>20</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Load Settings</string>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QComboBox" name="cmb_loadgifsettings">
@@ -84,14 +77,19 @@
         <bool>false</bool>
        </property>
        <property name="currentText">
-        <string/>
+        <string>Load Custom Settings</string>
        </property>
        <property name="currentIndex">
-        <number>-1</number>
+        <number>0</number>
        </property>
        <property name="frame">
         <bool>true</bool>
        </property>
+       <item>
+        <property name="text">
+         <string>Load Custom Settings</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
@@ -113,6 +111,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
       <widget class="QGroupBox" name="group_resize">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>Resize Options</string>
        </property>
@@ -199,6 +202,11 @@
      </item>
      <item>
       <widget class="QGroupBox" name="group_gifsettings">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>Gif Settings</string>
        </property>
@@ -249,6 +257,13 @@
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string>Settings:</string>
        </property>
@@ -256,6 +271,12 @@
      </item>
      <item>
       <widget class="QRadioButton" name="radio_size">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
        <property name="text">
         <string>Size</string>
        </property>
@@ -269,6 +290,12 @@
      </item>
      <item>
       <widget class="QRadioButton" name="radio_quality">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
        <property name="text">
         <string>Quality</string>
        </property>
@@ -279,6 +306,12 @@
      </item>
      <item>
       <widget class="QRadioButton" name="radio_balanced">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
        <property name="text">
         <string>Balanced</string>
        </property>
@@ -289,6 +322,12 @@
      </item>
      <item>
       <widget class="QRadioButton" name="radio_custom">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
        <property name="text">
         <string>Custom</string>
        </property>
@@ -319,6 +358,11 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="title">
       <string>Advanced Settings</string>
@@ -511,6 +555,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout_10">
      <item>
       <widget class="QGroupBox" name="groupBox_5">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>File Settings</string>
        </property>
@@ -548,6 +597,7 @@
        </property>
        <property name="font">
         <font>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -582,6 +632,7 @@
     <widget class="QLabel" name="lbl_gif_currtask">
      <property name="font">
       <font>
+       <pointsize>10</pointsize>
        <italic>true</italic>
       </font>
      </property>

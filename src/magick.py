@@ -121,7 +121,7 @@ class getImageSize(QtCore.QThread):
 class CommandFormatter(QtCore.QThread):
 
     progress = QtCore.pyqtSignal(QtCore.QObject, int, str, name="progressmade")
-
+    #TODO: Add back resizing.
     def __init__(self, display=None, screen=None):
         QtCore.QThread.__init__(self)
         self.display = display
