@@ -10,6 +10,8 @@ Clean up and optimize user interface design.
 Add deeper settings to Gif creation. (Compression methods, etc)
 Add working subtitles to frame extraction.
 Add support to making HTML capable MP4 gifs
+Use a QProgressDialog when running operations.
+  -Look at file sizes/quantities to determine whether the popup is needed.
 
 ==Low Priority==
 Determine optimal distribution techniques.
